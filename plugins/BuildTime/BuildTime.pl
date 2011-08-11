@@ -35,6 +35,8 @@ sub init_registry {
 sub _init_app {
     my ( $cb, $app ) = @_;
     return if $app->mode eq 'filtered_list';
+    return if $app->mode eq 'bulk_update_category';
+    return if $app->mode eq 'bulk_update_folder';
     my ( $epoch, $micro_seconds ) = gettimeofday;
     my $from = {};
     $from = { epoch => $epoch,
@@ -46,6 +48,8 @@ sub _init_app {
 sub _take_down {
     my ( $cb, $app ) = @_;
     return if $app->mode eq 'filtered_list';
+    return if $app->mode eq 'bulk_update_category';
+    return if $app->mode eq 'bulk_update_folder';
     my ( $epoch, $micro_seconds ) = gettimeofday;
     my $to = {};
     $to = { epoch => $epoch,
